@@ -15,7 +15,6 @@
 
 		<dependencies>
             <group targetFramework="net7.0-ios16.1">
-              <dependency id="Xamarin.Build.Download" version="0.11.4" />
 			  <dependency id="Xamarin.Firebase.iOS.Core" version="10.21.0" />
             </group>
 		</dependencies>
@@ -26,6 +25,8 @@
 
 		<file src="..\README.md" target="" />
 		<file src="..\LICENSE.md" target="" />
+
+		<file src="..\Firebase\Firebase.Crashlytics\upload-symbols.sh" target="upload\upload-symbols.sh" />
 
 		<!--Xamarin.iOS-->
 		<file src="..\Firebase\Firebase.Crashlytics\bin\Release\net7.0-ios\Firebase.Crashlytics.dll" target="lib\net7.0-ios16.1\Firebase.Crashlytics.dll" />
