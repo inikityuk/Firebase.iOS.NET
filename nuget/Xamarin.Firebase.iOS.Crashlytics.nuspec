@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>Xamarin.Firebase.iOS.Crashlytics</id>
+		<version>10.21.0</version>
+		<title>Firebase APIs Crashlytics iOS Library</title>
+		<authors>Microsoft, Igor Nikityuk</authors>
+		<owners/>
+		<license type="file">LICENSE.md</license>
+		<readme>README.md</readme>
+		<projectUrl>https://github.com/luberda-molinet/FFImageLoading</projectUrl>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<description>C# bindings for Firebase APIs Crashlytics iOS Library</description>
+		<summary>C# bindings for Firebase APIs Crashlytics iOS Library</summary>
+
+		<dependencies>
+            <group targetFramework="net7.0-ios16.1">
+              <dependency id="Xamarin.Build.Download" version="0.11.4" />
+			  <dependency id="Xamarin.Firebase.iOS.Core" version="10.21.0" />
+            </group>
+		</dependencies>
+
+	</metadata>
+
+	<files>
+
+		<file src="..\README.md" target="" />
+		<file src="..\LICENSE.md" target="" />
+
+		<!--Xamarin.iOS-->
+		<file src="..\Firebase\Firebase.Crashlytics\bin\Release\net7.0-ios\Firebase.Crashlytics.dll" target="lib\net7.0-ios16.1\Firebase.Crashlytics.dll" />
+		<file src="..\Firebase\Firebase.Crashlytics\bin\Release\net7.0-ios\Firebase.Crashlytics.pdb" target="lib\net7.0-ios16.1\Firebase.Crashlytics.pdb" />
+		<file src="..\Firebase\Firebase.Crashlytics\bin\Release\net7.0-ios\Firebase.Crashlytics.resources/**/*" target="lib\net7.0-ios16.1\Firebase.Crashlytics.resources\" />
+
+		<!-- Props -->
+		<file src="..\Firebase\Firebase.Crashlytics\Crashlytics.props" target="build\Xamarin.Firebase.iOS.Crashlytics.props" />
+		<file src="..\Firebase\Firebase.Crashlytics\Crashlytics.props" target="buildTransitive\Xamarin.Firebase.iOS.Crashlytics.props" />
+
+		<!-- Targets -->
+		<file src="..\Firebase\Firebase.Crashlytics\Crashlytics.targets" target="build\Xamarin.Firebase.iOS.Crashlytics.targets" />
+		<file src="..\Firebase\Firebase.Crashlytics\Crashlytics.targets" target="buildTransitive\Xamarin.Firebase.iOS.Crashlytics.targets" />
+
+	</files>
+
+</package>
