@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0-ios</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>portable</DebugType>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Frameworks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Frameworks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="Frameworks\FirebaseABTesting.xcframework">
+      <Kind>Static</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Foundation Security UIKit</Frameworks>
+      <LinkerFlags>-lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\FirebasePerformance.xcframework">
+      <Kind>Static</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>CoreTelephony Foundation Security SystemConfiguration UIKit</Frameworks>
+      <LinkerFlags>-lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\FirebaseRemoteConfig.xcframework">
+      <Kind>Static</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Foundation Security UIKit</Frameworks>
+      <LinkerFlags>-ObjC -lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\FirebaseSharedSwift.xcframework">
+      <Kind>Static</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks></Frameworks>
+      <LinkerFlags>-ObjC</LinkerFlags>
+    </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Firebase.Core\Firebase.Core.csproj" />
+  </ItemGroup>
+</Project>

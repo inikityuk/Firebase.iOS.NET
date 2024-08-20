@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net7.0-ios</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>portable</DebugType>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Frameworks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Frameworks\" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <NativeReference Include="Frameworks\FBLPromises.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+    <NativeReference Include="Frameworks\FirebaseAnalytics.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <LinkerFlags>-lc++ -lsqlite3 -lz -ld_classic</LinkerFlags>
+      <Frameworks>Foundation Security SystemConfiguration UIKit</Frameworks>
+    </NativeReference>
+<NativeReference Include="Frameworks\GoogleAppMeasurement.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Security SystemConfiguration</Frameworks>
+      <LinkerFlags>-lc++ -lsqlite3 -lz</LinkerFlags>
+    </NativeReference>
+<NativeReference Include="Frameworks\GoogleAppMeasurementIdentitySupport.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+    <NativeReference Include="Frameworks\FirebaseInstallations.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Foundation Security UIKit</Frameworks>
+      <LinkerFlags>-lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\GoogleUtilities.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Security SystemConfiguration</Frameworks>
+      <LinkerFlags>-lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\nanopb.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Firebase.Core\Firebase.Core.csproj" />
+  </ItemGroup>
+</Project>
