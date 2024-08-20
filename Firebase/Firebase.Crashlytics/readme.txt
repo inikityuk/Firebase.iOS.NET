@@ -30,3 +30,6 @@ Xamarin.Firebase.iOS.Crashlytics.targets import:
 	<FirebaseCrashlyticsUploadSymbolsContinueOnError>False</FirebaseCrashlyticsUploadSymbolsContinueOnError>
 </PropertyGroup>
 ```
+
+https://github.com/firebase/firebase-ios-sdk/blob/release-10.22/Crashlytics/upload-symbols
+upload-symbols.sh

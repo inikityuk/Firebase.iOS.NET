@@ -1,8 +1,7 @@
 <Project>
   <PropertyGroup>
     <_FirebaseCrashlyticsAssemblyName>Firebase.Crashlytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</_FirebaseCrashlyticsAssemblyName>
-    <_FirebaseCrashlyticsItemsFolder>FCrshlytcs-8.9.1</_FirebaseCrashlyticsItemsFolder>
-    <_FirebaseCrashlyticsSDKBaseFolder>$(XamarinBuildDownloadDir)$(_FirebaseCrashlyticsItemsFolder)\</_FirebaseCrashlyticsSDKBaseFolder>
+    <_FirebaseCrashlyticsSDKBaseFolder>$(MSBuildThisFileDirectory)..\upload\</_FirebaseCrashlyticsSDKBaseFolder>
     <!-- Requires a file extension, otherwise XDB will complain  -->
     <_FirebaseScriptName>upload-symbols.sh</_FirebaseScriptName>
     
@@ -19,20 +18,6 @@
     <_FirebaseCrashlyticsUploadDSymToFirebaseMasterBeforeTargets Condition="'$(OS)'!='Unix'">_SayGoodbye</_FirebaseCrashlyticsUploadDSymToFirebaseMasterBeforeTargets>
     <_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets Condition="'$(OS)'!='Unix'">_FirebaseCrashlyticsUploadDSymToFirebaseOnWindows</_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets>
   </PropertyGroup>
-  <Target Name="TestMessage" AfterTargets="Build" >
-    <Message Text="***********************************************************" Importance="high"/>
-    <Message Text="$(MSBuildThisFileDirectory)" Importance="high"/>
-    <Message Text="$(OS)" Importance="high"/>
-    <Message Text="$(XamarinBuildDownloadDir)" Importance="high"/>
-    <Message Text="***********************************************************" Importance="high"/>
-</Target>
-  <ItemGroup Condition="('$(OutputType)'!='Library' OR '$(IsAppExtension)'=='True')">
-    <XamarinBuildDownload Include="$(_FirebaseCrashlyticsItemsFolder)">
-      <Url>https://raw.githubusercontent.com/firebase/firebase-ios-sdk/61a1f5be795abc92bb3cf57b9ac1e854bac64196/Crashlytics/upload-symbols</Url>
-      <ToFile>$(_FirebaseCrashlyticsSDKBaseFolder)$(_FirebaseScriptName)</ToFile>
-      <Kind>Uncompressed</Kind>
-    </XamarinBuildDownload>
-  </ItemGroup>
   <Target Name="_FirebaseCrashlyticsUploadDSymToFirebaseMasterTarget"
     Condition="'$(_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets)'!='' AND '$(FirebaseCrashlyticsUploadSymbolsEnabled)'=='True'"
     AfterTargets="$(_FirebaseCrashlyticsUploadDSymToFirebaseMasterAfterTargets)"
