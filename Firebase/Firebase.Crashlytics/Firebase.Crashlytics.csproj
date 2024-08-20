@@ -33,4 +33,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Firebase.Core\Firebase.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Build.Download" Version="0.11.4" PrivateAssets="None" />
+  </ItemGroup>
+    <Import Project="Crashlytics.targets" />
 </Project>
