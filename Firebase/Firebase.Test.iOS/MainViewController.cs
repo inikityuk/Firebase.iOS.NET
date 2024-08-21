@@ -22,7 +22,7 @@ public class MainViewController : UIViewController
         Firebase.Core.App.Configure();
 
         // ANALYTICS
-        string test = Analytics.Analytics.AppInstanceID;
+        string test = Analytics.Analytics.AppInstanceId;
         Analytics.Analytics.LogEventWithName("EventNameTest", null);
 
         // CRASHLYTICS

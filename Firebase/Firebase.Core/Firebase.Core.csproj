@@ -51,13 +51,13 @@
       <Frameworks>Foundation Security UIKit</Frameworks>
       <LinkerFlags>-lz</LinkerFlags>
     </NativeReference>
- <NativeReference Include="Frameworks\FirebaseCoreInternal.xcframework">
+    <NativeReference Include="Frameworks\FirebaseCoreInternal.xcframework">
       <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
-      <!--<LinkerFlags>-ObjC -ld_classic -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -Wl,-rpath -Wl,@executable_path/Frameworks</LinkerFlags>-->
-      <!--<LinkerFlags>-ObjC -ld_classic -L/Users/inikityuk/Desktop/Firebase_Binding/Firebase/Firebase.Analytics/Frameworks -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.0/iphoneos -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.5/iphoneos</LinkerFlags>-->
-      <LinkerFlags>-ObjC -ld_classic</LinkerFlags>
+      <!--The only reason LinkerFlags doesn't work as we can't link phoneos and iphonesimulator swift libraries at the same time-->
+      <!--<LinkerFlags>-ObjC -ld_classic -L /usr/lib/swift -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -Wl,-rpath -Wl,/usr/lib/swift</LinkerFlags>-->
+      <LinkerFlags>-ObjC -lz</LinkerFlags>
   </NativeReference>
   </ItemGroup>
   <ItemGroup>

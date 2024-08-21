@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Foundation;
+using System.Linq;
 
 namespace Firebase.Analytics
 {
@@ -16,7 +17,7 @@ namespace Firebase.Analytics
         [Static]
         [Export("logEventWithName:parameters:")]
         void LogEventWithName(string name, [NullAllowed] NSDictionary<NSString, NSObject> parameters);
-
+    
         // +(void)setUserPropertyString:(NSString * _Nullable)value forName:(NSString * _Nonnull)name __attribute__((swift_name("setUserProperty(_:forName:)")));
         [Static]
         [Export("setUserPropertyString:forName:")]
@@ -25,7 +26,7 @@ namespace Firebase.Analytics
         // +(void)setUserID:(NSString * _Nullable)userID;
         [Static]
         [Export("setUserID:")]
-        void SetUserID([NullAllowed] string userID);
+        void SetUserId([NullAllowed] string userID);
 
         // +(void)setAnalyticsCollectionEnabled:(BOOL)analyticsCollectionEnabled;
         [Static]
@@ -46,7 +47,7 @@ namespace Firebase.Analytics
         [Static]
         [NullAllowed, Export("appInstanceID")]
         //[Verify(MethodToProperty)]
-        string AppInstanceID { get; }
+        string AppInstanceId { get; }
 
         // +(void)resetAnalyticsData;
         [Static]
