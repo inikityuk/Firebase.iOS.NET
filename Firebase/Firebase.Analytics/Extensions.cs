@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Mime;
+using System.Xml.Linq;
 using Firebase.Analytics;
 
 namespace Firebase.Analytics
@@ -120,6 +121,46 @@ namespace Firebase.Analytics
     {
         public static NSString AllowAdPersonalizationSignals { get; } = new NSString("allow_personalized_ads");
         public static NSString SignUpMethod { get; } = new NSString("sign_up_method");
+    }
+
+    public partial class Analytics
+    {
+        public static void LogEvent(string name, Dictionary<object, object>? parameters)
+        {
+            if (parameters == null)
+            {
+                LogEventWithName(name, null);
+            }
+            else if (parameters.Count == 0)
+            {
+                LogEventWithName(name, new NSDictionary<NSString, NSObject>());
+            }
+            else
+            {
+                NSDictionary<NSString, NSObject> dict = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(parameters!.Values.ToArray(), parameters!.Keys.ToArray(), (System.IntPtr)parameters!.Keys.Count);
+
+                LogEventWithName(name, dict);
+            }
+        }
+
+        public static void SetDefaultEventParameters(Dictionary<object, object>? parameters)
+        {
+            if (parameters == null)
+            {
+                NSDictionary<NSString, NSObject>? dict = null;
+                SetDefaultEventParameters(dict);
+            }
+            else if (parameters.Count == 0)
+            {
+                SetDefaultEventParameters(new NSDictionary<NSString, NSObject>());
+            }
+            else
+            {
+                NSDictionary<NSString, NSObject> dict = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(parameters!.Values.ToArray(), parameters!.Keys.ToArray(), (System.IntPtr)parameters!.Keys.Count);
+
+                SetDefaultEventParameters(dict);
+            }
+        }
     }
 }
 

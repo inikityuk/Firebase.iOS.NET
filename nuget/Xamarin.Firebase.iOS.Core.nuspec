@@ -30,6 +30,10 @@
 		<file src="..\Firebase\Firebase.Core\bin\Release\net7.0-ios\Firebase.Core.dll" target="lib\net7.0-ios16.1\Firebase.Core.dll" />
 		<file src="..\Firebase\Firebase.Core\bin\Release\net7.0-ios\Firebase.Core.pdb" target="lib\net7.0-ios16.1\Firebase.Core.pdb" />
 		<file src="..\Firebase\Firebase.Core\bin\Release\net7.0-ios\Firebase.Core.resources/**/*" target="lib\net7.0-ios16.1\Firebase.Core.resources\" />
+
+		<!-- Targets -->
+		<file src="..\Firebase\Firebase.Core\Core.targets" target="build\Xamarin.Firebase.iOS.Core.targets" />
+		<file src="..\Firebase\Firebase.Core\Core.targets" target="buildTransitive\Xamarin.Firebase.iOS.Core.targets" />
 	</files>
 
 </package>

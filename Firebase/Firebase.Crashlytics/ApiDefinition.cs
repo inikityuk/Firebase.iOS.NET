@@ -44,7 +44,7 @@ namespace Firebase.Crashlytics
 
         // -(void)setUserID:(NSString * _Nullable)userID;
         [Export("setUserID:")]
-        void SetUserID([NullAllowed] string userID);
+        void SetUserId([NullAllowed] string userID);
     }
 
     // @interface FIRStackFrame : NSObject
@@ -121,7 +121,7 @@ namespace Firebase.Crashlytics
 
         // -(void)setUserID:(NSString * _Nullable)userID;
         [Export("setUserID:")]
-        void SetUserID([NullAllowed] string userID);
+        void SetUserId([NullAllowed] string userID);
 
         // -(void)recordError:(NSError * _Nonnull)error __attribute__((swift_name("record(error:)")));
         [Export("recordError:")]
