@@ -5,11 +5,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+    <FirebaseCrashlyticsUploadSymbolsEnabled>True</FirebaseCrashlyticsUploadSymbolsEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <CreatePackage>false</CreatePackage>
     <MtouchLink>SdkOnly</MtouchLink>
     <WarningLevel>4</WarningLevel>
+    <CodesignProvision>Automatic</CodesignProvision>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <CreatePackage>false</CreatePackage>
@@ -21,12 +25,9 @@
     <BundleResource Include="GoogleService-Info.plist" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Firebase.Analytics\Firebase.Analytics.csproj" />
-    <ProjectReference Include="..\Firebase.Crashlytics\Firebase.Crashlytics.csproj" />
-    <ProjectReference Include="..\Firebase.Performance\Firebase.Performance.csproj" />
-    <ProjectReference Include="..\Firebase.Core\Firebase.Core.csproj" />
+    <PackageReference Include="Cirrious.FluentLayout" Version="3.0.0" />
   </ItemGroup>
-<!-- This code will simulate injection of *.targets file from nuget package -->
+  <!-- This code will simulate injection of *.targets file from nuget package -->
   <Target Name="LinkWithSwift" DependsOnTargets="_ParseBundlerArguments;_DetectSdkLocations" BeforeTargets="_LinkNativeExecutable">
 	<PropertyGroup>
 		<_SwiftPlatform Condition="$(RuntimeIdentifier.StartsWith('iossimulator-'))">iphonesimulator</_SwiftPlatform>
@@ -41,4 +42,9 @@
 		<_CustomLinkFlags Include="-Wl,/usr/lib/swift" />
 	</ItemGroup>
   </Target>
+  <ItemGroup>
+    <ProjectReference Include="..\Firebase.Analytics\Firebase.Analytics.csproj" />
+    <ProjectReference Include="..\Firebase.Crashlytics\Firebase.Crashlytics.csproj" />
+    <ProjectReference Include="..\Firebase.Performance\Firebase.Performance.csproj" />
+  </ItemGroup>
 </Project>
