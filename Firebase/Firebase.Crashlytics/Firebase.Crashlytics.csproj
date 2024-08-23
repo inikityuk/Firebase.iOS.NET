@@ -15,14 +15,8 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Frameworks\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Frameworks\" />
-  </ItemGroup>
-  <ItemGroup>
     <NativeReference Include="Frameworks\FirebaseCrashlytics.xcframework">
-      <Kind>Static</Kind>
+      <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
       <LinkerFlags>-ObjC -lc++ -lz -ld_classic</LinkerFlags>

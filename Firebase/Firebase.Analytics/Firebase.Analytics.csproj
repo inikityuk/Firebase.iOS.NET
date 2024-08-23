@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net7.0-ios</TargetFrameworks>
+    <TargetFramework>net7.0-ios</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
@@ -14,13 +14,6 @@
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Remove="Frameworks\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Frameworks\" />
-  </ItemGroup>
- 
   <ItemGroup>
     <NativeReference Include="Frameworks\FBLPromises.xcframework">
       <Kind>Framework</Kind>

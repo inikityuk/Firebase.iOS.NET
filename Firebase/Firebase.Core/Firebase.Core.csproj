@@ -14,31 +14,30 @@
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <NativeReference Include="Frameworks\GoogleDataTransport.xcframework">
-      <Kind>Static</Kind>
+      <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
       <Frameworks>CoreTelephony Security SystemConfiguration</Frameworks>
       <LinkerFlags>-lz</LinkerFlags>
     </NativeReference>
     <NativeReference Include="Frameworks\PromisesSwift.xcframework">
-      <Kind>Static</Kind>
+      <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
       <Frameworks></Frameworks>
       <LinkerFlags>-ObjC</LinkerFlags>
     </NativeReference>
     <NativeReference Include="Frameworks\FirebaseSessions.xcframework">
-      <Kind>Static</Kind>
+      <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
       <Frameworks>CoreTelephony Foundation Security SystemConfiguration UIKit</Frameworks>
       <LinkerFlags>-ObjC -lz</LinkerFlags>
     </NativeReference>
     <NativeReference Include="Frameworks\FirebaseCoreExtension.xcframework">
-      <Kind>Static</Kind>
+      <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
       <Frameworks>Foundation Security UIKit</Frameworks>
@@ -59,17 +58,5 @@
       <!--<LinkerFlags>-ObjC -ld_classic -L /usr/lib/swift -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -Wl,-rpath -Wl,/usr/lib/swift</LinkerFlags>-->
       <LinkerFlags>-ObjC -lz</LinkerFlags>
   </NativeReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Frameworks\FirebaseCoreExtension.xcframework\" />
-    <None Remove="Frameworks\FirebaseSessions.xcframework\" />
-    <None Remove="Frameworks\GoogleDataTransport.xcframework\" />
-    <None Remove="Frameworks\PromisesSwift.xcframework\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Frameworks\FirebaseCoreExtension.xcframework\" />
-    <Folder Include="Frameworks\FirebaseSessions.xcframework\" />
-    <Folder Include="Frameworks\GoogleDataTransport.xcframework\" />
-    <Folder Include="Frameworks\PromisesSwift.xcframework\" />
   </ItemGroup>
 </Project>

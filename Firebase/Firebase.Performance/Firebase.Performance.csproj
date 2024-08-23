@@ -15,35 +15,29 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Frameworks\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Frameworks\" />
-  </ItemGroup>
-  <ItemGroup>
     <NativeReference Include="Frameworks\FirebaseABTesting.xcframework">
-      <Kind>Static</Kind>
+      <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
       <Frameworks>Foundation Security UIKit</Frameworks>
       <LinkerFlags>-lz</LinkerFlags>
     </NativeReference>
     <NativeReference Include="Frameworks\FirebasePerformance.xcframework">
-      <Kind>Static</Kind>
+      <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
       <Frameworks>CoreTelephony Foundation Security SystemConfiguration UIKit</Frameworks>
       <LinkerFlags>-lz</LinkerFlags>
     </NativeReference>
     <NativeReference Include="Frameworks\FirebaseRemoteConfig.xcframework">
-      <Kind>Static</Kind>
+      <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
       <Frameworks>Foundation Security UIKit</Frameworks>
       <LinkerFlags>-ObjC -lz</LinkerFlags>
     </NativeReference>
     <NativeReference Include="Frameworks\FirebaseSharedSwift.xcframework">
-      <Kind>Static</Kind>
+      <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
       <Frameworks></Frameworks>
