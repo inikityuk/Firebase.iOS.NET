@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Diagnostics;
+using System.Net.Http;
 using Cirrious.FluentLayouts.Touch;
 using Firebase.Analytics;
 using Firebase.Crashlytics;
@@ -28,6 +30,7 @@ public class MainViewController : UIViewController
         UIButton buttonEvent = new UIButton() { TranslatesAutoresizingMaskIntoConstraints = false };
         buttonEvent.SetTitle("Send click event", UIControlState.Normal);
         buttonEvent.SetTitleColor(UIColor.Black, UIControlState.Normal);
+        buttonEvent.SetTitleColor(UIColor.White, UIControlState.Highlighted);
 
         View.AddSubview(buttonEvent);
 
@@ -36,6 +39,7 @@ public class MainViewController : UIViewController
         UIButton buttonCrash = new UIButton() { TranslatesAutoresizingMaskIntoConstraints = false };
         buttonCrash.SetTitle("Crash the app", UIControlState.Normal);
         buttonCrash.SetTitleColor(UIColor.Black, UIControlState.Normal);
+        buttonCrash.SetTitleColor(UIColor.White, UIControlState.Highlighted);
 
         View.AddSubview(buttonCrash);
 
@@ -80,6 +84,8 @@ public class MainViewController : UIViewController
             await Task.Delay(3000);
             httpMetric.Stop();
         });
+
+        AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
     }
 
     private void ButtonCrash_TouchUpInside(object? sender, EventArgs e)
@@ -92,6 +98,17 @@ public class MainViewController : UIViewController
     private void Button_TouchUpInside(object? sender, EventArgs e)
     {
         Analytics.Analytics.LogEvent("ButtonClickEvent", null);
+    }
+
+    private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+    {
+        string exceptionType = (e.ExceptionObject as Exception).GetType().FullName;
+        string message = (e.ExceptionObject as Exception).Message;
+
+
+        ExceptionModel exceptionModel = new ExceptionModel(exceptionType, message);
+        exceptionModel.StackTrace = new[] { new Firebase.Crashlytics.StackFrame("symbol", "file", 1) };
+        Crashlytics.Crashlytics.SharedInstance.RecordExceptionModel(exceptionModel);
     }
 }
 
