@@ -9,14 +9,14 @@
     <_FirebaseCrashlyticsUploadSymbolsContinueOnError Condition="'$(FirebaseCrashlyticsUploadSymbolsContinueOnError)'!='True'">False</_FirebaseCrashlyticsUploadSymbolsContinueOnError>
 
     <!-- Properties used to upload dSYM symbols to Firebase when using Visual Studio for Mac -->
-    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterAfterTargets Condition="'$(OS)'=='Unix'">Build</_FirebaseCrashlyticsUploadDSymToFirebaseMasterAfterTargets>
-    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterBeforeTargets Condition="'$(OS)'=='Unix'"></_FirebaseCrashlyticsUploadDSymToFirebaseMasterBeforeTargets>
-    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets Condition="'$(OS)'=='Unix'">_FirebaseCrashlyticsUploadDSymToFirebaseOnMac</_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets>
+    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterAfterTargets Condition="$([System.OperatingSystem]::IsMacOS())">Build</_FirebaseCrashlyticsUploadDSymToFirebaseMasterAfterTargets>
+    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterBeforeTargets Condition="$([System.OperatingSystem]::IsMacOS())"></_FirebaseCrashlyticsUploadDSymToFirebaseMasterBeforeTargets>
+    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets Condition="$([System.OperatingSystem]::IsMacOS())">_FirebaseCrashlyticsUploadDSymToFirebaseOnMac</_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets>
 
     <!-- Properties used to upload dSYM symbols to Firebase when using Visual Studio for Windows -->
-    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterAfterTargets Condition="'$(OS)'!='Unix'"></_FirebaseCrashlyticsUploadDSymToFirebaseMasterAfterTargets>
-    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterBeforeTargets Condition="'$(OS)'!='Unix'">_SayGoodbye</_FirebaseCrashlyticsUploadDSymToFirebaseMasterBeforeTargets>
-    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets Condition="'$(OS)'!='Unix'">_FirebaseCrashlyticsUploadDSymToFirebaseOnWindows</_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets>
+    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterAfterTargets Condition="$([System.OperatingSystem]::IsWindows())"></_FirebaseCrashlyticsUploadDSymToFirebaseMasterAfterTargets>
+    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterBeforeTargets Condition="$([System.OperatingSystem]::IsWindows())">_SayGoodbye</_FirebaseCrashlyticsUploadDSymToFirebaseMasterBeforeTargets>
+    <_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets Condition="$([System.OperatingSystem]::IsWindows())">_FirebaseCrashlyticsUploadDSymToFirebaseOnWindows</_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets>
   </PropertyGroup>
   <Target Name="_FirebaseCrashlyticsUploadDSymToFirebaseMasterTarget"
     Condition="'$(_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets)'!='' AND '$(FirebaseCrashlyticsUploadSymbolsEnabled)'=='True'"
@@ -24,7 +24,7 @@
     BeforeTargets="$(_FirebaseCrashlyticsUploadDSymToFirebaseMasterBeforeTargets)"
     DependsOnTargets="$(_FirebaseCrashlyticsUploadDSymToFirebaseMasterDependsOnTargets)" />
 <!-- Target to upload dSYM symbols to Firebase when using Visual Studio for Mac -->
-  <Target Name="_FirebaseCrashlyticsUploadDSymToFirebaseOnMac" >
+  <Target Name="_FirebaseCrashlyticsUploadDSymToFirebaseOnMac">
     <!-- Make file executable -->
     <Exec Command="chmod +x '$(_FirebaseCrashlyticsSDKBaseFolder)$(_FirebaseScriptName)'" ContinueOnError="true" />
     
