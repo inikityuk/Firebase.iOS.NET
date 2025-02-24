@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-ios</TargetFramework>
+<!--    <TargetFramework>net7.0-ios</TargetFramework>-->
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
@@ -8,9 +8,9 @@
     <FirebaseCrashlyticsUploadSymbolsEnabled>True</FirebaseCrashlyticsUploadSymbolsEnabled>
 
     <!--Try NET8 crash reporting with this configuration, NET7 works fine-->
-    <!--<TargetFramework>net8.0-ios</TargetFramework>-->
+    <TargetFramework>net8.0-ios</TargetFramework>
     <!--https://github.com/xamarin/GoogleApisForiOSComponents/issues/643#issuecomment-1920970044-->
-	<!--<_ExportSymbolsExplicitly>false</_ExportSymbolsExplicitly>-->
+	<_ExportSymbolsExplicitly>false</_ExportSymbolsExplicitly>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <CreatePackage>false</CreatePackage>
