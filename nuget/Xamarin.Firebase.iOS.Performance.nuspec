@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Xamarin.Firebase.iOS.Performance</id>
-		<version>10.21.0</version>
+		<version>11.8.0</version>
 		<title>Firebase Performance iOS Library</title>
 		<authors>Microsoft, Igor Nikityuk</authors>
 		<owners/>
@@ -14,8 +14,8 @@
 		<summary>C# bindings for Firebase Performance iOS Library</summary>
 
 		<dependencies>
-            <group targetFramework="net7.0-ios16.1">
-				<dependency id="Xamarin.Firebase.iOS.Core" version="10.21.0" />
+            <group targetFramework="net8.0-ios18.0">
+				<dependency id="Xamarin.Firebase.iOS.Core" version="11.8.0" />
             </group>
 		</dependencies>
 
@@ -27,9 +27,9 @@
 		<file src="..\LICENSE.md" target="" />
 
 		<!--Xamarin.iOS-->
-		<file src="..\Firebase\Firebase.Performance\bin\Release\net7.0-ios\Firebase.Performance.dll" target="lib\net7.0-ios16.1\Firebase.Performance.dll" />
-		<file src="..\Firebase\Firebase.Performance\bin\Release\net7.0-ios\Firebase.Performance.pdb" target="lib\net7.0-ios16.1\Firebase.Performance.pdb" />
-		<file src="..\Firebase\Firebase.Performance\bin\Release\net7.0-ios\Firebase.Performance.resources/**/*" target="lib\net7.0-ios16.1\Firebase.Performance.resources\" />
+		<file src="..\Firebase\Firebase.Performance\bin\Release\net8.0-ios\Firebase.Performance.dll" target="lib\net8.0-ios18.0\Firebase.Performance.dll" />
+		<file src="..\Firebase\Firebase.Performance\bin\Release\net8.0-ios\Firebase.Performance.pdb" target="lib\net8.0-ios18.0\Firebase.Performance.pdb" />
+		<file src="..\Firebase\Firebase.Performance\bin\Release\net8.0-ios\Firebase.Performance.resources.zip" target="lib\net8.0-ios18.0\Firebase.Performance.resources.zip" />
 	</files>
 
 </package>
