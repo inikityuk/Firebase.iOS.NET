@@ -4,6 +4,7 @@ using System.Net.Http;
 using Cirrious.FluentLayouts.Touch;
 using Firebase.Analytics;
 using Firebase.Crashlytics;
+using Firebase.Performance;
 
 namespace Firebase.Test.iOS;
 
@@ -45,6 +46,15 @@ public class MainViewController : UIViewController
 
         buttonCrash.TouchUpInside += ButtonCrash_TouchUpInside;
 
+        UIButton buttonCrashTask = new UIButton() { TranslatesAutoresizingMaskIntoConstraints = false };
+        buttonCrashTask.SetTitle("Crash in the Task", UIControlState.Normal);
+        buttonCrashTask.SetTitleColor(UIColor.Black, UIControlState.Normal);
+        buttonCrashTask.SetTitleColor(UIColor.White, UIControlState.Highlighted);
+
+        View.AddSubview(buttonCrashTask);
+
+        buttonCrashTask.TouchUpInside += ButtonCrashTask_TouchUpInside;
+
         // Constraints
         View.AddConstraints
         (
@@ -55,7 +65,10 @@ public class MainViewController : UIViewController
             buttonEvent.Below(label, 20f),
 
             buttonCrash.WithSameCenterX(View),
-            buttonCrash.Below(buttonEvent, 20f)
+            buttonCrash.Below(buttonEvent, 20f),
+
+            buttonCrashTask.WithSameCenterX(View),
+            buttonCrashTask.Below(buttonCrash, 20f)
         );
 
         Firebase.Core.App.Configure();
@@ -85,7 +98,19 @@ public class MainViewController : UIViewController
             httpMetric.Stop();
         });
 
-        AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+        AppDomain.CurrentDomain.UnhandledException += (s, a) => RecordManagedException(a.ExceptionObject);
+        TaskScheduler.UnobservedTaskException += (s, a) => RecordManagedException(a.Exception);
+    }
+
+    private void ButtonCrashTask_TouchUpInside(object? sender, EventArgs e)
+    {
+        Task.Run(async () =>
+        {
+            await Task.Delay(1000);
+
+            Firebase.Performance.HttpMetric httpMetric = null;
+            var test = httpMetric.ResponseCode;
+        }).Observe();
     }
 
     private void ButtonCrash_TouchUpInside(object? sender, EventArgs e)
@@ -100,15 +125,25 @@ public class MainViewController : UIViewController
         Analytics.Analytics.LogEvent("ButtonClickEvent", null);
     }
 
-    private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+    private static void RecordManagedException(object exceptionObject)
     {
-        string exceptionType = (e.ExceptionObject as Exception).GetType().FullName;
-        string message = (e.ExceptionObject as Exception).Message;
+        var exception = exceptionObject as Exception;
+        if (exception == null)
+            return;
 
+        ExceptionModel exceptionModel = new ExceptionModel($"ReleaseIPA:{exception.GetType().FullName}", exception.Message)
+        {
+            StackTrace = StackTraceParser.Parse(exception).Select((frame, Index) =>
+                new Firebase.Crashlytics.StackFrame(
+                    string.IsNullOrEmpty(frame.MethodName) ? frame.ClassName : $"{frame.ClassName}.{frame.MethodName}",
+                    frame.FileName,
+                    frame.LineNumber)).ToArray()
+        };
 
-        ExceptionModel exceptionModel = new ExceptionModel(exceptionType, message);
-        exceptionModel.StackTrace = new[] { new Firebase.Crashlytics.StackFrame("symbol", "file", 1) };
         Crashlytics.Crashlytics.SharedInstance.RecordExceptionModel(exceptionModel);
+
+        Environment.FailFast(null);
     }
 }
+
 
