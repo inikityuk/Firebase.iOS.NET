@@ -80,10 +80,6 @@ public class MainViewController : UIViewController
         string test = Analytics.Analytics.AppInstanceId;
         Analytics.Analytics.LogEvent("EventNameTest", null);
 
-        //// CRASHLYTICS
-        //NSError nSError = new NSError(new NSString("Domain"), 55);
-        //Crashlytics.Crashlytics.SharedInstance.RecordError(nSError);
-
         //// PERFORMANCE
         Firebase.Performance.HttpMetric httpMetric = new Firebase.Performance.HttpMetric("https://valdperformance.com/", Firebase.Performance.HttpMethod.Get);
         httpMetric.ResponseCode = 200;
@@ -98,6 +94,9 @@ public class MainViewController : UIViewController
             httpMetric.Stop();
         });
 
+        // Based on:
+        // https://github.com/xamarin/GooglePlayServicesComponents/issues/423
+        // https://github.com/drungrin/Fabric.Sdk.Xamarin/blob/f7e6207e5731cfc10ac0c6e96df3d68b19caf2a0/Sources/CrashlyticsKit.Touch/Crashlytics.cs
         AppDomain.CurrentDomain.UnhandledException += (s, a) => RecordManagedException(a.ExceptionObject);
         TaskScheduler.UnobservedTaskException += (s, a) => RecordManagedException(a.Exception);
     }
