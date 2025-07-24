@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Xamarin.Firebase.iOS.Crashlytics</id>
-		<version>11.8.0</version>
+		<version>11.12.0</version>
 		<title>Firebase APIs Crashlytics iOS Library</title>
 		<authors>Microsoft, Igor Nikityuk</authors>
 		<owners/>
@@ -15,7 +15,7 @@
 
 		<dependencies>
             <group targetFramework="net8.0-ios18.0">
-			  <dependency id="Xamarin.Firebase.iOS.Core" version="11.8.0" />
+			  <dependency id="Xamarin.Firebase.iOS.Core" version="11.12.0" />
             </group>
 		</dependencies>
 
@@ -32,6 +32,11 @@
 		<file src="..\Firebase\Firebase.Crashlytics\bin\Release\net8.0-ios\Firebase.Crashlytics.dll" target="lib\net8.0-ios18.0\Firebase.Crashlytics.dll" />
 		<file src="..\Firebase\Firebase.Crashlytics\bin\Release\net8.0-ios\Firebase.Crashlytics.pdb" target="lib\net8.0-ios18.0\Firebase.Crashlytics.pdb" />
 		<file src="..\Firebase\Firebase.Crashlytics\bin\Release\net8.0-ios\Firebase.Crashlytics.resources.zip" target="lib\net8.0-ios18.0\Firebase.Crashlytics.resources.zip" />
+
+		<!--Xamarin.MacCatalyst-->
+		<!-- <file src="..\Firebase\Firebase.Crashlytics\bin\Release\net8.0-maccatalyst\Firebase.Crashlytics.dll" target="lib\net8.0-maccatalyst18.0\Firebase.Crashlytics.dll" />
+		<file src="..\Firebase\Firebase.Crashlytics\bin\Release\net8.0-maccatalyst\Firebase.Crashlytics.pdb" target="lib\net8.0-maccatalyst18.0\Firebase.Crashlytics.pdb" />
+		<file src="..\Firebase\Firebase.Crashlytics\bin\Release\net8.0-maccatalyst\Firebase.Crashlytics.resources.zip" target="lib\net8.0-maccatalyst18.0\Firebase.Crashlytics.resources.zip" /> -->
 
 		<!-- Props -->
 		<file src="..\Firebase\Firebase.Crashlytics\Crashlytics.props" target="build\Xamarin.Firebase.iOS.Crashlytics.props" />

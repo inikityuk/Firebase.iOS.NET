@@ -72,7 +72,7 @@ public class MainViewController : UIViewController
         );
 
         Firebase.Core.App.Configure();
-
+        
         Analytics.Analytics.SetAnalyticsCollectionEnabled(true);
         Crashlytics.Crashlytics.SharedInstance.SetCrashlyticsCollectionEnabled(true);
 
@@ -80,19 +80,19 @@ public class MainViewController : UIViewController
         string test = Analytics.Analytics.AppInstanceId;
         Analytics.Analytics.LogEvent("EventNameTest", null);
 
-        //// PERFORMANCE
-        Firebase.Performance.HttpMetric httpMetric = new Firebase.Performance.HttpMetric("https://valdperformance.com/", Firebase.Performance.HttpMethod.Get);
-        httpMetric.ResponseCode = 200;
-        httpMetric.RequestPayloadSize = 10000;
-        httpMetric.ResponsePayloadSize = 50000;
-        httpMetric.ResponseContentType = "application/json";
-        httpMetric.Start();
-
-        Task.Run(async () =>
-        {
-            await Task.Delay(3000);
-            httpMetric.Stop();
-        });
+        // PERFORMANCE
+         Firebase.Performance.HttpMetric httpMetric = new Firebase.Performance.HttpMetric("https://valdperformance.com/", Firebase.Performance.HttpMethod.Get);
+         httpMetric.ResponseCode = 200;
+         httpMetric.RequestPayloadSize = 10000;
+         httpMetric.ResponsePayloadSize = 50000;
+         httpMetric.ResponseContentType = "application/json";
+         httpMetric.Start();
+         
+         Task.Run(async () =>
+         {
+             await Task.Delay(3000);
+             httpMetric.Stop();
+         });
 
         // Based on:
         // https://github.com/xamarin/GooglePlayServicesComponents/issues/423
@@ -106,7 +106,7 @@ public class MainViewController : UIViewController
         Task.Run(async () =>
         {
             await Task.Delay(1000);
-
+        
             Firebase.Performance.HttpMetric httpMetric = null;
             var test = httpMetric.ResponseCode;
         }).Observe();
@@ -129,19 +129,21 @@ public class MainViewController : UIViewController
         var exception = exceptionObject as Exception;
         if (exception == null)
             return;
-
-        ExceptionModel exceptionModel = new ExceptionModel($"ReleaseIPA:{exception.GetType().FullName}", exception.Message)
-        {
-            StackTrace = StackTraceParser.Parse(exception).Select((frame, Index) =>
-                new Firebase.Crashlytics.StackFrame(
-                    string.IsNullOrEmpty(frame.MethodName) ? frame.ClassName : $"{frame.ClassName}.{frame.MethodName}",
-                    frame.FileName,
-                    frame.LineNumber)).ToArray()
-        };
-
+        
+        Console.WriteLine($"IGOR-TESTING:{exception}");
+        
+          ExceptionModel exceptionModel = new ExceptionModel($"ReleaseIPA:{exception.GetType().FullName}", exception.Message)
+          {
+              StackTrace = StackTraceParser.Parse(exception).Select((frame, Index) =>
+                  new Firebase.Crashlytics.StackFrame(
+                      string.IsNullOrEmpty(frame.MethodName) ? frame.ClassName : $"{frame.ClassName}.{frame.MethodName}",
+                      frame.FileName,
+                      frame.LineNumber)).ToArray()
+          };
+        
         Crashlytics.Crashlytics.SharedInstance.RecordExceptionModel(exceptionModel);
-
-        Environment.FailFast(null);
+        
+        Environment.Exit(Environment.ExitCode);
     }
 }
 

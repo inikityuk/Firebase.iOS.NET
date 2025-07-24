@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Firebase.Test.App</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.inikityuk.firebasetest</string>
+	<string>com.company.ios</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

@@ -13,7 +13,7 @@ namespace Firebase.Test.iOS
     /// <summary>
     /// This class converting .NET exception stack trace to temporary "StackFrame" class,
     /// which mimic "Firebase.Crashlytics.StackFrame" class on iOS and "StackTraceElement" on Android.
-    /// This trace convertion allow us to have properly grouped and readable error/crashes reports in Firebase console
+    /// This trace conversion allow us to have properly grouped and readable error/crashes reports in Firebase console
     /// </summary>
     public class StackTraceParser
     {

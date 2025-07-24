@@ -4,7 +4,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
-    <Version>11.8.0</Version>
+    <Version>11.12.0</Version>
     <id>Xamarin.Firebase.Performance.iOS.NET</id>
   </PropertyGroup>
 
@@ -17,33 +17,12 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="Frameworks\FirebaseABTesting.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-      <ForceLoad>True</ForceLoad>
-      <Frameworks>Foundation Security UIKit</Frameworks>
-      <LinkerFlags>-lz</LinkerFlags>
-    </NativeReference>
     <NativeReference Include="Frameworks\FirebasePerformance.xcframework">
       <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
       <Frameworks>CoreTelephony Foundation Security SystemConfiguration UIKit</Frameworks>
       <LinkerFlags>-lz</LinkerFlags>
-    </NativeReference>
-    <NativeReference Include="Frameworks\FirebaseRemoteConfig.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-      <ForceLoad>True</ForceLoad>
-      <Frameworks>Foundation Security UIKit</Frameworks>
-      <LinkerFlags>-ObjC -lz</LinkerFlags>
-    </NativeReference>
-    <NativeReference Include="Frameworks\FirebaseSharedSwift.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-      <ForceLoad>True</ForceLoad>
-      <Frameworks></Frameworks>
-      <LinkerFlags>-ObjC</LinkerFlags>
     </NativeReference>
   </ItemGroup>
   <ItemGroup>

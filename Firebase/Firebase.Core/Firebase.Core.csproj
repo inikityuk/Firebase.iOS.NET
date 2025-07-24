@@ -4,7 +4,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
-    <Version>11.8.0</Version>
+    <Version>11.12.0</Version>
     <id>Xamarin.Firebase.Core.iOS.NET</id>
   </PropertyGroup>
 
@@ -17,35 +17,26 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="Frameworks\GoogleDataTransport.xcframework">
+    <NativeReference Include="Frameworks\FBLPromises.xcframework">
       <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
-      <Frameworks>CoreTelephony Security SystemConfiguration</Frameworks>
-      <LinkerFlags>-lz</LinkerFlags>
     </NativeReference>
-    <NativeReference Include="Frameworks\Promises.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-      <ForceLoad>True</ForceLoad>
-      <Frameworks></Frameworks>
-      <LinkerFlags>-ObjC</LinkerFlags>
-    </NativeReference>
-    <NativeReference Include="Frameworks\FirebaseSessions.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-      <ForceLoad>True</ForceLoad>
-      <Frameworks>CoreTelephony Foundation Security SystemConfiguration UIKit</Frameworks>
-      <LinkerFlags>-ObjC -lz</LinkerFlags>
-    </NativeReference>
-    <NativeReference Include="Frameworks\FirebaseCoreExtension.xcframework">
+    <NativeReference Include="Frameworks\FirebaseABTesting.xcframework">
       <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
       <Frameworks>Foundation Security UIKit</Frameworks>
       <LinkerFlags>-lz</LinkerFlags>
     </NativeReference>
-      <NativeReference Include="Frameworks\FirebaseCore.xcframework">
+    <NativeReference Include="Frameworks\FirebaseCore.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Foundation Security UIKit</Frameworks>
+      <LinkerFlags>-lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\FirebaseCoreExtension.xcframework">
       <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
@@ -59,8 +50,74 @@
       <!--The only reason LinkerFlags doesn't work as we can't link phoneos and iphonesimulator swift libraries at the same time-->
       <!--<LinkerFlags>-ObjC -ld_classic -L /usr/lib/swift -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -Wl,-rpath -Wl,/usr/lib/swift</LinkerFlags>-->
       <LinkerFlags>-ObjC -lz</LinkerFlags>
-  </NativeReference>
+    </NativeReference>
+    <NativeReference Include="Frameworks\FirebaseInstallations.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Foundation Security UIKit</Frameworks>
+      <LinkerFlags>-lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\FirebaseRemoteConfig.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Foundation Security UIKit</Frameworks>
+      <LinkerFlags>-ObjC -lz</LinkerFlags>
+    </NativeReference>
     <NativeReference Include="Frameworks\FirebaseRemoteConfigInterop.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks></Frameworks>
+      <LinkerFlags>-ObjC</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\FirebaseSessions.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>CoreTelephony Foundation Security SystemConfiguration UIKit</Frameworks>
+      <LinkerFlags>-ObjC -lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\FirebaseSharedSwift.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks></Frameworks>
+      <LinkerFlags>-ObjC</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\GoogleAppMeasurement.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Security SystemConfiguration</Frameworks>
+      <LinkerFlags>-lc++ -lsqlite3 -lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\GoogleAppMeasurementIdentitySupport.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+    <NativeReference Include="Frameworks\GoogleDataTransport.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>CoreTelephony Security SystemConfiguration</Frameworks>
+      <LinkerFlags>-lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\GoogleUtilities.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Security SystemConfiguration</Frameworks>
+      <LinkerFlags>-lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="Frameworks\nanopb.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+    <NativeReference Include="Frameworks\Promises.xcframework">
       <Kind>Framework</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>

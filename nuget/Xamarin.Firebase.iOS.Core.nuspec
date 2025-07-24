@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Xamarin.Firebase.iOS.Core</id>
-		<version>11.8.0</version>
+		<version>11.12.0</version>
 		<title>Firebase.Core iOS Library</title>
 		<authors>Microsoft, Igor Nikityuk</authors>
 		<owners/>
@@ -14,9 +14,7 @@
 		<summary>C# bindings for Firebase.Core iOS Library</summary>
 
 		<dependencies>
-            <group targetFramework="net8.0-ios18.0">
-
-            </group>
+            <group targetFramework="net8.0-ios18.0"></group>
 		</dependencies>
 
 	</metadata>
@@ -30,6 +28,11 @@
 		<file src="..\Firebase\Firebase.Core\bin\Release\net8.0-ios\Firebase.Core.dll" target="lib\net8.0-ios18.0\Firebase.Core.dll" />
 		<file src="..\Firebase\Firebase.Core\bin\Release\net8.0-ios\Firebase.Core.pdb" target="lib\net8.0-ios18.0\Firebase.Core.pdb" />
 		<file src="..\Firebase\Firebase.Core\bin\Release\net8.0-ios\Firebase.Core.resources.zip" target="lib\net8.0-ios18.0\Firebase.Core.resources.zip" />
+
+		<!--Xamarin.MacCatalyst-->
+		<!-- <file src="..\Firebase\Firebase.Core\bin\Release\net8.0-maccatalyst\Firebase.Core.dll" target="lib\net8.0-maccatalyst18.0\Firebase.Core.dll" />
+		<file src="..\Firebase\Firebase.Core\bin\Release\net8.0-maccatalyst\Firebase.Core.pdb" target="lib\net8.0-maccatalyst18.0\Firebase.Core.pdb" />
+		<file src="..\Firebase\Firebase.Core\bin\Release\net8.0-maccatalyst\Firebase.Core.resources.zip" target="lib\net8.0-maccatalyst18.0\Firebase.Core.resources.zip" /> -->
 
 		<!-- Targets -->
 		<file src="..\Firebase\Firebase.Core\Core.targets" target="build\Xamarin.Firebase.iOS.Core.targets" />
